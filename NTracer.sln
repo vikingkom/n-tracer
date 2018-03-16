@@ -1,0 +1,102 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTracer.Client.CallContext", "NTracer.Client.CallContext\NTracer.Client.CallContext.csproj", "{DC7748F7-CF80-486D-83E9-243156BE27FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NTracer.Client.Core", "NTracer.Client.Core\NTracer.Client.Core.csproj", "{6FFBCA33-DDB5-4720-94C2-F92BEDC88D84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NTracer.Client", "NTracer.Client\NTracer.Client.csproj", "{08A06728-7C84-46AC-83FF-F2CAF1745AB4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NTracer.Communication", "NTracer.Communication\NTracer.Communication.csproj", "{316B9C79-DF3F-42F8-BA77-3ADB0E04A769}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NTracer.Server.Core", "NTracer.Server.Core\NTracer.Server.Core.csproj", "{016B0A5F-1CC3-4562-8D92-E19E79B62FA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{6849D1D2-77FD-431E-A703-FA99106426AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{0063FDF0-5989-465A-A99A-AE01A9DFC32E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client.Tests", "Client.Tests", "{D25C1424-5A6A-4082-983B-616F9C22566B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C54B7C85-F063-428E-A0C4-F639FC0C8CA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTracer.Client.Tests", "NTracer.Client.Tests\NTracer.Client.Tests.csproj", "{DAEF72A1-61C6-4F99-886F-16C0ED0A627F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTracer.Client.Benchmarks", "NTracer.Client.Benchmarks\NTracer.Client.Benchmarks.csproj", "{DD45D6FE-85E9-4847-86A5-78ECA1E44B0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F247649C-D50D-46FD-9AF4-CEF8A0C3090D}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NTracer.Server.Web", "NTracer.Server.Web\NTracer.Server.Web.csproj", "{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C}"
+EndProject
+Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC7748F7-CF80-486D-83E9-243156BE27FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7748F7-CF80-486D-83E9-243156BE27FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7748F7-CF80-486D-83E9-243156BE27FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7748F7-CF80-486D-83E9-243156BE27FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FFBCA33-DDB5-4720-94C2-F92BEDC88D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FFBCA33-DDB5-4720-94C2-F92BEDC88D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FFBCA33-DDB5-4720-94C2-F92BEDC88D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FFBCA33-DDB5-4720-94C2-F92BEDC88D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A06728-7C84-46AC-83FF-F2CAF1745AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A06728-7C84-46AC-83FF-F2CAF1745AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A06728-7C84-46AC-83FF-F2CAF1745AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A06728-7C84-46AC-83FF-F2CAF1745AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{316B9C79-DF3F-42F8-BA77-3ADB0E04A769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316B9C79-DF3F-42F8-BA77-3ADB0E04A769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316B9C79-DF3F-42F8-BA77-3ADB0E04A769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316B9C79-DF3F-42F8-BA77-3ADB0E04A769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{016B0A5F-1CC3-4562-8D92-E19E79B62FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{016B0A5F-1CC3-4562-8D92-E19E79B62FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{016B0A5F-1CC3-4562-8D92-E19E79B62FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{016B0A5F-1CC3-4562-8D92-E19E79B62FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAEF72A1-61C6-4F99-886F-16C0ED0A627F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEF72A1-61C6-4F99-886F-16C0ED0A627F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEF72A1-61C6-4F99-886F-16C0ED0A627F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEF72A1-61C6-4F99-886F-16C0ED0A627F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD45D6FE-85E9-4847-86A5-78ECA1E44B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD45D6FE-85E9-4847-86A5-78ECA1E44B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD45D6FE-85E9-4847-86A5-78ECA1E44B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD45D6FE-85E9-4847-86A5-78ECA1E44B0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC7748F7-CF80-486D-83E9-243156BE27FE} = {6849D1D2-77FD-431E-A703-FA99106426AD}
+		{6FFBCA33-DDB5-4720-94C2-F92BEDC88D84} = {6849D1D2-77FD-431E-A703-FA99106426AD}
+		{08A06728-7C84-46AC-83FF-F2CAF1745AB4} = {6849D1D2-77FD-431E-A703-FA99106426AD}
+		{316B9C79-DF3F-42F8-BA77-3ADB0E04A769} = {C54B7C85-F063-428E-A0C4-F639FC0C8CA4}
+		{016B0A5F-1CC3-4562-8D92-E19E79B62FA1} = {0063FDF0-5989-465A-A99A-AE01A9DFC32E}
+		{DAEF72A1-61C6-4F99-886F-16C0ED0A627F} = {D25C1424-5A6A-4082-983B-616F9C22566B}
+		{DD45D6FE-85E9-4847-86A5-78ECA1E44B0A} = {D25C1424-5A6A-4082-983B-616F9C22566B}
+		{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C} = {0063FDF0-5989-465A-A99A-AE01A9DFC32E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {06C0B7C3-4008-4D17-8032-F3F52A0B320E}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal
