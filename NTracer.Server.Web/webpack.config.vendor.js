@@ -25,10 +25,9 @@ module.exports = (env) => {
                 'react',
                 'react-dom',
                 'react-router-dom',
-                'react-redux',
-                'redux',
-                'redux-thunk',
-                'react-router-redux',
+                'mobx-react',
+                'mobx',
+                'mobx-react-router',
                 'jquery'
             ],
         },
