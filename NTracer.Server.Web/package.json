@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack.config --progress --colors  --mode production",
-    "build-dev": "./node_modules/.bin/webpack --config webpack.config.js --progress --colors  --mode development",
+    "build": "./node_modules/.bin/webpack --config webpack.config --progress --colors  --mode production --env.prod",
+    "build-dev": "./node_modules/.bin/webpack --config webpack.config.js --progress --colors  --mode development ",
     "dev": "webpack-dev-server --config webpack.config.js --progress --mode development",
-    "vendor": "./node_modules/.bin/webpack --config webpack.config.vendor.js --progress --mode development",
-    "build-vendor": "./node_modules/.bin/webpack --config webpack.config.vendor.js --progress --mode production"
+    "vendor": "./node_modules/.bin/webpack --config webpack.config.vendor.js --progress --mode development --env.prod",
+    "vendor-dev": "./node_modules/.bin/webpack --config webpack.config.vendor.js --progress --mode production"
   },
   "author": "Vladimir Komarevskiy",
   "license": "ISC",
@@ -20,6 +20,8 @@
     "@types/react-router": "^4.0.23",
     "@types/react-router-dom": "^4.2.5",
     "@types/webpack-env": "^1.13.5",
+    "aspnet-webpack": "^2.0.3",
+    "aspnet-webpack-react": "^3.0.0",
     "awesome-typescript-loader": "^4.0.1",
     "bootstrap": "^4.0.0",
     "css-loader": "^0.28.11",
@@ -30,7 +32,8 @@
     "url-loader": "^1.0.1",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-dev-server": "^3.1.1",
+    "webpack-hot-middleware": "^2.21.2"
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
