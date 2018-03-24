@@ -1,40 +1,29 @@
 var path = require("path");
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-    entry: [
-        "react-hot-loader/patch",
-        "webpack-dev-server/client?http://0.0.0.0:4000",
-        "webpack/hot/only-dev-server",
-        "babel-polyfill",
-        "whatwg-fetch",
-        "./src/index"
-    ],
-    devServer: {
-        hot: true,
-        contentBase: path.resolve(__dirname, "dist"),
-        port: 4000,
-        host: "0.0.0.0",
-        publicPath: "/",
-        historyApiFallback: true,
-        disableHostCheck: true
+    entry: {
+        vendor: ["react", "react-dom", "react-router"],
+        app: ["babel-polyfill", "./src/index"]
     },
     output: {
         path: path.join(__dirname, "dist"),
         publicPath: "/",
-        filename: "app.[hash].js"
+        filename: "assets/[name].[hash].js",
+        chunkFilename: "assets/[name].[chunkhash].js"
     },
-    devtool: "eval",
+    devtool: "cheap-module-source-map",
     module: {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                include: path.join(__dirname, "src"),
                 loader: "babel-loader",
-                options: {
+                query: {
                     presets: [
-                        ["es2015", {"modules": false}],
+                        ["es2015", { modules: false }],
                         "stage-0",
                         "react"
                     ],
@@ -45,14 +34,16 @@ module.exports = {
                 }
             },
             {
-                test: /\.scss|css$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "postcss-loader",
-                    "resolve-url-loader",
-                    "sass-loader?sourceMap"
-                ]
+                test: /\.scss|css$/i,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        "css-loader",
+                        "postcss-loader",
+                        "resolve-url-loader",
+                        "sass-loader?sourceMap"
+                    ]
+                })
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
@@ -83,9 +74,32 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
+            }
+        }),
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({ hash: false, template: "./index.hbs" }),
-        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /nb/)
+        new webpack.optimize.OccurrenceOrderPlugin(true),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+            minChunks: Infinity
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
+            compress: {
+                warnings: false,
+                drop_console: true,
+                screw_ie8: true
+            },
+            output: {
+                comments: false
+            }
+        }),
+        new ExtractTextPlugin("assets/styles.css"),
+        new HtmlWebpackPlugin({
+            hash: false,
+            template: "./index.hbs"
+        })
     ]
 };
