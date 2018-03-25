@@ -1,91 +1,126 @@
-var path = require("path");
-var webpack = require("webpack");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+var webpack = require('webpack');
+var path = require('path');
+
+// variables
+var isProduction = process.argv.indexOf('-p') >= 0;
+var sourcePath = path.join(__dirname, './src');
+var outPath = path.join(__dirname, './dist');
+
+// plugins
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 module.exports = {
-    entry: [
-        "react-hot-loader/patch",
-        "webpack-dev-server/client?http://0.0.0.0:4000",
-        "webpack/hot/only-dev-server",
-        "babel-polyfill",
-        "whatwg-fetch",
-        "./src/index"
-    ],
-    devServer: {
-        hot: true,
-        contentBase: path.resolve(__dirname, "dist"),
-        port: 4000,
-        host: "0.0.0.0",
-        publicPath: "/",
-        historyApiFallback: true,
-        disableHostCheck: true
-    },
-    output: {
-        path: path.join(__dirname, "dist"),
-        publicPath: "/",
-        filename: "app.[hash].js"
-    },
-    devtool: "eval",
-    module: {
-        rules: [
+  context: sourcePath,
+  entry: {
+    main: './main.tsx'
+  },
+  output: {
+    path: outPath,
+    filename: 'bundle.js',
+    chunkFilename: '[chunkhash].js',
+    publicPath: '/'
+  },
+  target: 'web',
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx'],
+    // Fix webpack's default behavior to not load packages with jsnext:main module
+    // (jsnext:main directs not usually distributable es6 format, but es6 sources)
+    mainFields: ['module', 'browser', 'main'],
+    alias: {
+      'app': path.resolve(__dirname, 'src/app/')
+    }
+  },
+  module: {
+    rules: [
+      // .ts, .tsx
+      {
+        test: /\.tsx?$/,
+        use: isProduction
+          ? 'ts-loader'
+          : ['babel-loader?plugins=react-hot-loader/babel', 'ts-loader']
+      },
+      // css
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader",
-                options: {
-                    presets: [
-                        ["es2015", {"modules": false}],
-                        "stage-0",
-                        "react"
-                    ],
-                    plugins: [
-                        "transform-async-to-generator",
-                        "transform-decorators-legacy"
-                    ]
-                }
+              loader: 'css-loader',
+              query: {
+                modules: true,
+                sourceMap: !isProduction,
+                importLoaders: 1,
+                localIdentName: '[local]__[hash:base64:5]'
+              }
             },
             {
-                test: /\.scss|css$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "postcss-loader",
-                    "resolve-url-loader",
-                    "sass-loader?sourceMap"
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: [
+                  require('postcss-import')({ addDependencyTo: webpack }),
+                  require('postcss-url')(),
+                  require('postcss-cssnext')(),
+                  require('postcss-reporter')(),
+                  require('postcss-browser-reporter')({
+                    disabled: isProduction
+                  })
                 ]
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                use: [
-                    "file-loader?hash=sha512&digest=hex&name=[hash].[ext]",
-                    {
-                        loader: "image-webpack-loader",
-                        options: {
-                            progressive: true,
-                            optimizationLevel: 7,
-                            interlaced: false,
-                            pngquant: {
-                                quality: "65-90",
-                                speed: 4
-                            }
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use: "url-loader?limit=10000&mimetype=application/font-woff"
-            },
-            {
-                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use: "file-loader"
+              }
             }
-        ]
-    },
-    plugins: [
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({ hash: false, template: "./index.hbs" }),
-        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /nb/)
+          ]
+        })
+      },
+      // static assets
+      { test: /\.html$/, use: 'html-loader' },
+      { test: /\.png$/, use: 'url-loader?limit=10000' },
+      { test: /\.jpg$/, use: 'file-loader' }
     ]
+  },
+  optimization: {
+    splitChunks: {
+      name: true,
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          minChunks: 2
+        },
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          priority: -10
+        }
+      }
+    },
+    runtimeChunk: true
+  },
+  plugins: [
+    new WebpackCleanupPlugin(),
+    new ExtractTextPlugin({
+      filename: 'styles.css',
+      disable: !isProduction
+    }),
+    new HtmlWebpackPlugin({
+      template: 'assets/index.html'
+    })
+  ],
+  devServer: {
+    contentBase: sourcePath,
+    hot: true,
+    inline: true,
+    historyApiFallback: {
+      disableDotRule: true
+    },
+    stats: 'minimal'
+  },
+  devtool: 'cheap-module-eval-source-map',
+  node: {
+    // workaround for webpack-dev-server issue
+    // https://github.com/webpack/webpack-dev-server/issues/60#issuecomment-103411179
+    fs: 'empty',
+    net: 'empty'
+  }
 };
