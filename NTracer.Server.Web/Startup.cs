@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NTracer.Server.Core;
+using NTracer.Server.Core.Repositories;
 
 namespace NTracer.Server.Web
 {
@@ -20,9 +21,8 @@ namespace NTracer.Server.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<InnerServer>();
-            services.AddTransient<IConnectionRepository, ConnectionRepository>();
-            services.AddTransient<ITracedScopeRepository, TracedScopeRepository>();
+            services.AddSingleton<SinkSource>();
+            services.AddTransient<IConnectionRepository, InMemoryConnectionRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

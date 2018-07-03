@@ -46,7 +46,7 @@ namespace NTracer.Client
 
         public void Write(string scopeId, string eventName, TracerValue content)
         {
-            var message = new WriteEvent(scopeId, eventName, content, DateTimeOffset.Now);
+            var message = new LogEvent(scopeId, eventName, content, DateTimeOffset.Now);
             _events.Add(message);
         }
     }

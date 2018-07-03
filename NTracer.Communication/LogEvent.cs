@@ -2,13 +2,13 @@
 
 namespace NTracer.Communication
 {
-    public class WriteEvent : ScopeEvent
+    public class LogEvent : ScopeEvent
     {
-        public WriteEvent()
+        public LogEvent()
         {
         }
 
-        public WriteEvent(string scopeId, string eventName, TracerValue value, DateTimeOffset time)
+        public LogEvent(string scopeId, string eventName, TracerValue value, DateTimeOffset time)
         {
             ScopeId = scopeId;
             Time = time;

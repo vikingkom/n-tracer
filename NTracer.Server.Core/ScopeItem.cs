@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace NTracer.Server.Core
 {
-    public class TracedScope
+    public class ScopeItem
     {
 
         private Dictionary<object, object> _localProperties = new Dictionary<object, object>();
@@ -12,7 +12,7 @@ namespace NTracer.Server.Core
 
         public DateTimeOffset CreationDate { get; set; }
         public string Id { get; set; }
-        public TracedScope ParentScope { get; set; }
+        public ScopeItem ParentScope { get; set; }
         public void SetLocalProperties(IDictionary<object, object> properties)
         {
             _localProperties = properties.Union(_localProperties.Where(w => !properties.ContainsKey(w.Key))).Where(w => w.Value != null).ToDictionary(k => k.Key, v => v.Value);

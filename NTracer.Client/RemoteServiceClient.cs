@@ -32,7 +32,7 @@ namespace NTracer.Client
                     ConnectionId = connectionId,
                     OpenScopeEvents = scopeEvents.OfType<OpenScopeEvent>().ToList(),
                     CloseScopeEvents = scopeEvents.OfType<CloseScopeEvent>().ToList(),
-                    WriteScopeEvents = scopeEvents.OfType<WriteEvent>().ToList(),
+                    LogScopeEvents = scopeEvents.OfType<LogEvent>().ToList(),
                     SetPropertyScopeEvents = scopeEvents.OfType<SetPropertyEvent>().ToList()
                 };
                 var content = AsJson(data);

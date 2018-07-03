@@ -7,23 +7,23 @@ namespace NTracer.Server.Web.Controllers
 {
     public class Receiver : ControllerBase, IRemoteService
     {
-        private readonly InnerServer _innerServer;
+        private readonly SinkSource _sinkSource;
 
-        public Receiver(InnerServer innerServer)
+        public Receiver(SinkSource sinkSource)
         {
-            _innerServer = innerServer;
+            _sinkSource = sinkSource;
         }
 
         [HttpPost]
         public Task SendBatch([FromBody]ScopeEventsFromConnection eventsFromConnection)
         {
-            return _innerServer.SendBatch(eventsFromConnection);
+            return _sinkSource.SendBatch(eventsFromConnection);
         }
 
         [HttpPost]
         public Task<string> Connect([FromBody]ConnectionData connection)
         {
-            return _innerServer.Connect(connection);
+            return _sinkSource.Connect(connection);
         }
     }
 }

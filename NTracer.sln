@@ -32,6 +32,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NTracer.Server.Web", "NTracer.Server.Web\NTracer.Server.Web.csproj", "{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server.Core.Tests", "Server.Core.Tests", "{6316A00A-E138-4C80-B8FF-6F3B95C16F2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTracer.Server.Core.Tests", "NTracer.Server.Core.Tests\NTracer.Server.Core.Tests.csproj", "{65AD1713-079F-44FD-B3B6-DA22850167A3}"
+EndProject
 Global
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
@@ -73,6 +77,10 @@ Global
 		{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65AD1713-079F-44FD-B3B6-DA22850167A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65AD1713-079F-44FD-B3B6-DA22850167A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65AD1713-079F-44FD-B3B6-DA22850167A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65AD1713-079F-44FD-B3B6-DA22850167A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +94,7 @@ Global
 		{DAEF72A1-61C6-4F99-886F-16C0ED0A627F} = {D25C1424-5A6A-4082-983B-616F9C22566B}
 		{DD45D6FE-85E9-4847-86A5-78ECA1E44B0A} = {D25C1424-5A6A-4082-983B-616F9C22566B}
 		{E9CD71CB-8865-476A-9C19-3FB63CCE2A9C} = {0063FDF0-5989-465A-A99A-AE01A9DFC32E}
+		{65AD1713-079F-44FD-B3B6-DA22850167A3} = {6316A00A-E138-4C80-B8FF-6F3B95C16F2D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06C0B7C3-4008-4D17-8032-F3F52A0B320E}

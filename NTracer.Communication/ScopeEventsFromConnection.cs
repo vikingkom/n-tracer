@@ -8,12 +8,6 @@ namespace NTracer.Communication
         public ICollection<OpenScopeEvent> OpenScopeEvents { get; set; }
         public ICollection<CloseScopeEvent> CloseScopeEvents { get; set; }
         public ICollection<SetPropertyEvent> SetPropertyScopeEvents { get; set; }
-        public ICollection<WriteEvent> WriteScopeEvents { get; set; }
-    }
-
-    public class ConnectionData
-    {
-        public string InstanceName { get; set; }
-        public TracerValue Value { get; set; }
+        public ICollection<LogEvent> LogScopeEvents { get; set; }
     }
 }
